@@ -41,7 +41,7 @@ Red and White Wine Quality
 
 
 ###5. Attribute information:
-
+```
    For more information, read [Cortez et al., 2009].
 
    Input variables (based on physicochemical tests):
@@ -58,7 +58,7 @@ Red and White Wine Quality
    11 - alcohol (% by volume)
    Output variable (based on sensory data): 
    12 - quality (score between 0 and 10)
-
+```
 
 ###6. Description of attributes:
 
@@ -178,7 +178,7 @@ qplot(density, data = data, fill = color, binwidth = 0.0002) +
                   breaks = seq(min(data$density), 1.00370, 0.002))
 ```
 
-Looking at 'table' summary we see that there are two outliers: 1.0103 and 1.03898. To see the distribution of density clearer I used log10 and limited the data. Now we can see that density distribution of white wine if bimodal and of red wine is normal.
+Looking at 'table' summary we see that there are two outliers: 1.0103 and 1.03898. To see the distribution of density clearer I used log10 and limited the data. Now we can see that density distribution of white wine is bimodal and of red wine is normal.
 
 
 
@@ -190,7 +190,7 @@ qplot(volatile.acidity, data = data, fill = color, binwidth = 0.001) +
     scale_x_log10(breaks = seq(min(data$volatile.acidity), max(data$volatile.acidity), 0.1))
 ```
 
-Volatile acidity has normal distribution. I also suppose that more acetic wines have worse marks because high acidity can lead to an unpleasant taste.
+Volatile acidity has normal distribution. I also suppose that more acetic wines have worse marks because high acidity can lead to unpleasant taste.
 
 
 
@@ -282,7 +282,8 @@ ggplot(data = data, aes(x = chlorides, y = sulphates, color = color)) +
    coord_cartesian(ylim=c(min(data$sulphates), 1))
 ```
 
-After checking correlated pairs I noticed that red and white wine behave different in some graphs. Means for red and white wines correlation can be significantly different.
+After checking correlated pairs I noticed that red and white wine behave different in some graphs. Means for red and white wine correlation can be significantly different.
+```
                                                 RED      |     WHITE
 * alcohol vs. density                    :    strong c.  :   strong c.
 * fixed.acidity vs. density              :    strong c.  :     no c.
@@ -291,7 +292,7 @@ After checking correlated pairs I noticed that red and white wine behave differe
 * residual.sugar vs. alcohol             :     no c.     :   strong c.
 * chlorides vs. density                  :    strong c.  :   strong c.
 * chlorides vs. sulphates                :    strong c.  :     no c.
-
+```
 
 
 #### Compare Quality vs. Alcohol
@@ -307,7 +308,7 @@ The only objective wine parameter which has correlation with quality is alcohol.
 
 
 
-### Significantly Different Parameters for Red and White Wines
+### Significantly Different Parameters for Red and White Wine
 
 #### Fixed Acidity vs. Color
 
@@ -364,8 +365,8 @@ ggplot(aes(x = chlorides, y = sulphates, color = quality), data = data) +
     xlim(min(data$chlorides), quantile(data$chlorides, 0.95)) 
 ```
 
-Sulfates and chlorides of white wine are spread out more that of red wine.
-Most frequent qualities for both colors are 4, 5, 6 and 7.
+Sulfates and chlorides of white wine are spread out more than red wine.
+Most frequent quality levels for both colors are 4, 5, 6 and 7.
 
 #### Fixed Acidity and Volatile Acidity
 ```{r fixed.acidity and volatile.acidity}
@@ -391,7 +392,7 @@ ggplot(aes(x = free.sulfur.dioxide, y = total.sulfur.dioxide, color = quality), 
     xlim(min(data$free.sulfur.dioxide), quantile(data$free.sulfur.dioxide, 0.95)) 
 ```
 
-We can see clear positive correlation between total sulfur dioxide and free sulfur dioxide for red and white wines. Total sulfur dioxide of white wine has higher indicators mostly because of wines with quality '5'.
+We can see clear positive correlation between total sulfur dioxide and free sulfur dioxide for red and white wine. Total sulfur dioxide of white wine has higher values mostly because of wine with quality '5'.
 
 
 #### PH and Alcohol
@@ -404,7 +405,7 @@ ggplot(aes(x = pH, y = alcohol, color = quality), data = data) +
     xlim(min(data$pH), quantile(data$pH, 0.95)) 
 ```
 
-Levels of alcohol for both wines are quite the same, but minimum level of pH for whine wine is 2.9, for red wine is 3.1. Only red wine with quality '5' has pH level around 3. 
+Levels of alcohol for both wine is quite the same, but minimum level of pH for white wine is 2.9, for red wine is 3.1. Only red wine with quality '5' has pH level around 3. 
 
 
 #### Citric Acid and Alcohol
@@ -417,7 +418,7 @@ ggplot(aes(x = citric.acid, y = alcohol, color = quality), data = data) +
     xlim(min(data$citric.acid), quantile(data$citric.acid, 0.95)) 
 ```
 
-In these plots we can notice that there is concentration of red wines with citric acid == 0, for white wines - between 0.2 - 0.4.
+In these plots we can notice that most of red wine is clustered around where citric acid is 0 - 0.2, for white wine this is true for citric acid level 0.2 - 0.4.
 
 
 
@@ -437,8 +438,8 @@ qplot(as.numeric(as.character(quality)), data = data, fill = color, binwidth = 1
 
 ### Description
 
-Let's again look an distribution of data by wine color. 
-We may conclude that data we used is normally distributed and mostly frequent quality of red and white wines is 6 and 7. 
+Let's again look at distribution of wine by color. 
+We may say that most frequent quality levels are 6 and 7 for both wine color. 
 
 
 ### Plot Two: Correlation Between Objective Parameters
@@ -455,9 +456,9 @@ ggplot(data = data, aes(x = density, y = alcohol, color = color)) +
 
 ### Description
 
-Density and Alcohol show the strongest correlation among all wine parameters equals to -0.687 for both red and white wines. 
-Red wines in average are stronger that white wines. 
-In this dataset very light wines are only white and very strong are only red.
+Density and Alcohol show the strongest correlation among all wine parameters and it equals to -0.687 for both red and white wine. 
+Red wine in average are stronger than white wine. 
+In this dataset wine with less alcohol percentage are mostly white and red wine mostly has more alcohol percentage.
 
 
 ```{r density vs. alcohol by quality}
@@ -472,8 +473,8 @@ ggplot(data = data, aes(x = density, y = alcohol, color = factor(quality))) +
 
 ### Description
 
-The strongest wines have quality 7, the lightest wines are of quality 5.
-Wines of quality 8 can be of different combinations of alcohol and density. 
+Wine with high alcohol percentage has quality level 7, wine with less alcohol percentage is quality level 5.
+Wine with quality levels 6 and 8 have various combinations of alcohol and density. 
 
 
 
@@ -490,24 +491,24 @@ ggplot(data = data, aes(y = alcohol, x = quality)) +
 
 ### Description
 
-Alcohol level and Quality have correlation 0.4. This is the strongest correlation we have found between an objective wine parameter and wine quality. 0.4 is not a high correlation level so we cannot use alcohol as parameter for quality prediction. 
+Alcohol level and Quality have correlation value of 0.4. This is the strongest correlation we have found between an objective wine parameter and wine quality. 0.4 is not a high correlation level so we cannot use alcohol as a parameter for quality prediction. 
 
 ------
 
 # Reflection
 
-Analyzing the data we can make the following conclusions:
+Analyzing the data we can come up the following conclusion:
 
-1. With decrease of alcohol density grows.
+1. When alcohol percentage decreases, density grows.
 2. Red wine is stronger in average.
-3. With growth of fixed acidity density of red wine grows. White wine almost doesn't change density.
-4. With growth of total sulfur dioxide level of residual sugar grows. Effect on white wine is stronger.
-5. White wine density grows with residual sugar level.
+3. When fixed acidity increases density of red wine increases as well. White wine almost doesn't show any correlation.
+4. Total sulfur dioxide and level of residual sugar are positively correlated. Correlation shows higher value with white wine.
+5. White wine density and residual sugar level have positive correlation.
 6. Alcohol level of white wine decreases with the growth of residual sugar level.
-7. The strongest wines have quality 7, the lightest wines are of quality 5.
-8. Mostly frequent quality of red and white wines is 6 and 7. 
+7. Wine with high alcohol percentage has quality level 7, wine with less alcohol percentage is quality level 5.
+8. Mostly frequent quality levels of red and white wine are 6 and 7. 
 
 
-According to my investigation I may conclude that experts' decisions on wine quality are based on their personal testes or could depend on other variables like year of production, grape types, wine brand etc. as only one variable (alcohol level) has correlation with quality of wine.
+According to my investigation I may conclude that experts' decisions on wine quality levels are based on their personal testes or could depend on other variables like year of production, grape types, wine brand etc. as only one variable (alcohol level) has correlation with quality of wine.
 
-For future exploration of this data I would pick one category of wines(for example of quality 3-4, 5-7, 8-9) to look at the patterns which can appear in each of these three buckets. 
+For future exploration of this data I would pick one category of wine (for example, quality level 3-4, 5-7, 8-9) to look at the patterns which can appear in each of these three buckets. I also would normalize data because we have more white wine than red wine. 
