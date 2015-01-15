@@ -1,4 +1,4 @@
-## Link to html version of project with graphs:
+## Link to HTML version of project with plots:
 http://rpubs.com/Daria/53624
 
 # EDA_Red-and-White-Wine-Quality
