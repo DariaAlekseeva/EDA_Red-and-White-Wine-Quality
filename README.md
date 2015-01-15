@@ -41,7 +41,7 @@ Exploratory Data Analysis, Final Project
 
 
 ###5. Attribute information:
-
+```
    For more information, read [Cortez et al., 2009].
 
    Input variables (based on physicochemical tests):
@@ -58,7 +58,7 @@ Exploratory Data Analysis, Final Project
    11 - alcohol (% by volume)
    Output variable (based on sensory data): 
    12 - quality (score between 0 and 10)
-
+```
 
 ###6. Description of attributes:
 
