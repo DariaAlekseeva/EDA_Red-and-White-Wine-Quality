@@ -1,5 +1,5 @@
 ## Link to HTML version of project with plots:
-http://rpubs.com/Daria/53624
+http://rpubs.com/Daria/57835
 
 # EDA_Red-and-White-Wine-Quality
 Exploratory Data Analysis, Final Project
