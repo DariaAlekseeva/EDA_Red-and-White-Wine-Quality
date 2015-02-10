@@ -493,8 +493,9 @@ ggplot(data = data,
 
 ```{r boxplot density vs. alcohol by quality}
 ggplot(data = data, 
-       aes(x = density, y = alcohol, color = factor(quality)) )+
-   geom_boxplot(alpha = 0.2) +
+       aes(x = density, y = alcohol) )+
+   facet_wrap( ~ quality) +
+   geom_boxplot() +
    xlab('Density') +
    ylab('Alcohol') +
    ggtitle('Density vs. Alcohol correlation by Quality')
@@ -510,10 +511,7 @@ Wine with quality levels 6 and 8 have various combinations of alcohol and densit
 ### Plot Three: Quality vs. Alcohol
 ```{r Quality & Alcohol}
 ggplot(data = data, aes(y = alcohol, x = quality)) +
-   geom_point(alpha = 1/4, 
-              position = position_jitter(h = 0), 
-              size = 4, 
-              color = 'red') +
+   geom_boxplot() +
    geom_smooth(method = 'lm') +
    facet_wrap(~ color) +
    xlab('Quality') +
